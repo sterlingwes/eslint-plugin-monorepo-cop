@@ -1,36 +1,25 @@
-# prevent relative imports above the nearest package.json (no-relative-import-outside-package)
+# Prevent relative imports outside of monorepo package
 
-Please describe the origin of the rule here.
+AKA `no-relative-import-outside-package`
 
+This rule exists to enforce package / workspace boundaries in a monorepo (a repo managed by something like yarn workspaces or lerna). Packages need to be isolated such that relative imports outside / above the nearest package.json don't happen.
 
-## Rule Details
-
-This rule aims to...
-
-Examples of **incorrect** code for this rule:
-
-```js
-
-// fill me in
+## Fail
 
 ```
+// package/my-package/index.js
 
-Examples of **correct** code for this rule:
+import something from '../some-other-package/something.js'
 
-```js
-
-// fill me in
-
+const somethingRequired = require('../some-other-package/something.js')
 ```
 
-### Options
+## Pass
 
-If there are any options, describe them here. Otherwise, delete this section.
+```
+// package/my-package/index.js
 
-## When Not To Use It
+import something from '@my-monorepo/some-other-package'
 
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+const somethingRequired = require('@my-monorepo/some-other-package')
+```

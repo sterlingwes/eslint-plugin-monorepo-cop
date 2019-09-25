@@ -1,36 +1,15 @@
-# Disallow disabling the no relative import rule outside of a package (no-disable-monorepo-no-relative-rule)
+# Prevent disabling the no relative import rule
 
-Please describe the origin of the rule here.
+AKA `no-disable-monorepo-no-relative-rule`
 
+This rule exists to prevent disabling any rules in this repo, because we're opinionated and we think this rule is important.
 
-## Rule Details
-
-This rule aims to...
-
-Examples of **incorrect** code for this rule:
-
-```js
-
-// fill me in
+## Fail
 
 ```
-
-Examples of **correct** code for this rule:
-
-```js
-
-// fill me in
-
+import something from '../some-other-package/something.js' // eslint-disable monorepo-cop/no-relative-import-outside-package
 ```
 
-### Options
+## Pass
 
-If there are any options, describe them here. Otherwise, delete this section.
-
-## When Not To Use It
-
-Give a short description of when it would be appropriate to turn off this rule.
-
-## Further Reading
-
-If there are other links that describe the issue this rule addresses, please include them here in a bulleted list.
+See pass exaple for [no-relative-import-outside-package](./no-relative-import-outside-package.md)
