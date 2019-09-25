@@ -44,10 +44,19 @@ const parserOptions = {
 const invalidRelativeScenario = {
   code: "import something from '../some-other-package/file'",
   filename: '/Users/someone/repo/packages/my-package/file.js',
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
+  parserOptions,
+  errors: [
+    {
+      message: errorMessage('../some-other-package/file', 'my-package'),
+      type: 'ImportDeclaration',
+    },
+  ],
+};
+
+const invalidNamedRelativeScenario = {
+  code: "import { something } from '../some-other-package/file'",
+  filename: '/Users/someone/repo/packages/my-package/file.js',
+  parserOptions,
   errors: [
     {
       message: errorMessage('../some-other-package/file', 'my-package'),
@@ -90,5 +99,5 @@ const ruleTester = new RuleTester();
 ruleTester.run('no-relative-import-outside-package', rule, {
   valid: [validModuleScenario, validRelativeScenario, validTypeScenario],
 
-  invalid: [invalidRelativeScenario],
+  invalid: [invalidRelativeScenario, invalidNamedRelativeScenario],
 });
