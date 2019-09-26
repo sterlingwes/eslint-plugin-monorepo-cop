@@ -40,5 +40,5 @@ Then use our recommended ruleset:
 
 ## Supported Rules
 
-- [no-relative-import-outside-package](./docs/rules/no-relative-import-outside-package.md)
-- [no-disable-monorepo-no-relative-rule](./docs/rules/no-disable-monorepo-no-relative-rule.md)
+- [no-relative-import-outside-package](https://github.com/sterlingwes/eslint-plugin-monorepo-cop/docs/rules/no-relative-import-outside-package.md)
+- [no-disable-monorepo-no-relative-rule](https://github.com/sterlingwes/eslint-plugin-monorepo-cop/docs/rules/no-disable-monorepo-no-relative-rule.md)

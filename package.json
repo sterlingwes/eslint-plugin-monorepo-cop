@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-monorepo-cop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rules to enforce good monorepo behaviours",
   "keywords": [
     "eslint",
@@ -17,6 +17,10 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sterlingwes/eslint-plugin-monorepo-cop"
   },
   "dependencies": {
     "read-pkg-up": "^6.0.0",
