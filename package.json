@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-monorepo-cop",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Rules to enforce good monorepo behaviours",
   "keywords": [
     "eslint",
