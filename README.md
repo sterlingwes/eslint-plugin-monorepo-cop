@@ -1,6 +1,6 @@
 # eslint-plugin-monorepo-cop
 
-Rules to enforce good monorepo behaviours
+Rules to enforce good monorepo behaviours (mainly, no relative imports from other packages).
 
 ## Installation
 
@@ -24,28 +24,21 @@ Add `monorepo-cop` to the plugins section of your `.eslintrc` configuration file
 
 ```json
 {
-    "plugins": [
-        "monorepo-cop"
-    ]
+  "plugins": ["monorepo-cop"]
 }
 ```
 
-
-Then configure the rules you want to use under the rules section.
+Then use our recommended ruleset:
 
 ```json
 {
-    "rules": {
-        "monorepo-cop/rule-name": 2
+    "extends": {
+        "plugin:monorepo-cop/recommended"
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
-
-
-
-
-
+- [no-relative-import-outside-package](./docs/rules/no-relative-import-outside-package.md)
+- [no-disable-monorepo-no-relative-rule](./docs/rules/no-disable-monorepo-no-relative-rule.md)
