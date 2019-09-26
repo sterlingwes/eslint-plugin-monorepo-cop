@@ -13,8 +13,8 @@ const sinon = require('sinon');
 const rule = require('../../../lib/rules/no-relative-import-outside-package');
 const RuleTester = require('eslint').RuleTester;
 
-const errorMessage = (importPath, packageName) =>
-  `import of "${importPath}" reaches outside of the package "${packageName}"`;
+const errorMessage = (importPath, packageName, type = 'import') =>
+  `${type} of "${importPath}" reaches outside of the package "${packageName}"`;
 
 //------------------------------------------------------------------------------
 // Tests
@@ -65,6 +65,21 @@ const invalidNamedRelativeScenario = {
   ],
 };
 
+const invalidRelativeRequireScenario = {
+  code: "const something = require('../some-other-package/file')",
+  filename: '/Users/someone/repo/packages/my-package/file.js',
+  parserOptions,
+  errors: [
+    {
+      message: errorMessage(
+        '../some-other-package/file',
+        'my-package',
+        'require'
+      ),
+    },
+  ],
+};
+
 const validRelativeScenario = {
   code: "import something from './more-files/file'",
   filename: '/Users/someone/repo/packages/my-package/file.js',
@@ -99,5 +114,9 @@ const ruleTester = new RuleTester();
 ruleTester.run('no-relative-import-outside-package', rule, {
   valid: [validModuleScenario, validRelativeScenario, validTypeScenario],
 
-  invalid: [invalidRelativeScenario, invalidNamedRelativeScenario],
+  invalid: [
+    invalidRelativeScenario,
+    invalidNamedRelativeScenario,
+    invalidRelativeRequireScenario,
+  ],
 });
